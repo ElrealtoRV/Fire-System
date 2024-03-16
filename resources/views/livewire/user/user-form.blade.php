@@ -128,7 +128,15 @@
                                     Office
                                     <span class="login-danger">*</span>
                                 </label>
-                                <input class="form-control" type="text" wire:model="office" placeholder />
+                                <select class="form-control select" type="text" wire:model="office">
+
+                                    <option value="" selected>Select an Office</option>
+                                    @foreach ( $offices as $office)
+                                        <option value="{{ $office->id }}">
+                                            {{ $office->description }}
+                                        </option>
+                                    @endforeach
+                                    </select>
                             </div>
                         </div>
                     </div>
@@ -142,6 +150,7 @@
                                         <span class="login-danger">*</span>
                                     </label>
                                     <input class="form-control" type="password" wire:model="password" placeholder />
+                                    
                                 </div>
                             </div>
                             <div class="col-md-6">

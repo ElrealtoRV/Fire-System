@@ -20,6 +20,7 @@ use App\Http\Livewire\Authentication\RoleList;
 use App\Http\Livewire\Authentication\PermissionList;
 use App\Http\Livewire\Position\PositionList;
 use App\Http\Livewire\Affiliation\AffiliationList;
+use App\Http\Livewire\Office\OfficeList;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +49,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('permission', PermissionList::class);
     Route::view('setting', 'setting')->name('setting');
     Route::get('activity-log', ActivityLog::class);
+    Route::get('office', OfficeList::class);
 });
 Route::group(['middleware' => ['role:admin|Head']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

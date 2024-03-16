@@ -23,7 +23,8 @@ return new class extends Migration
             $table->bigInteger('idnum')->unique();
             $table->unsignedBigInteger('position_id'); // Changing the data type
             $table->foreign('position_id')->references('id')->on('positions');
-            $table->string('office');
+            $table->unsignedBigInteger('office'); // Changing the data type
+            $table->foreign('office')->references('id')->on('office_lists')->unique();
             $table->string('password');
             $table->integer('status')->default(0);
             $table->rememberToken();

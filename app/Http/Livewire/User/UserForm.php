@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\OfficeLists;
 use App\Models\User;
 use App\Models\Position;
 use Illuminate\Support\Facades\Hash;
@@ -69,7 +70,7 @@ class UserForm extends Component
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
                 'idnum' => ['required', 'max:9', 'unique:users,idnum'],
                 'position_id' => 'required', // Changed from 'position' to 'position_id'
-                'office' => 'required',
+                'office' => ['required',  'office',  'unique:users,office'],
             ]);
     
             $user = User::find($this->userId);
@@ -102,7 +103,7 @@ class UserForm extends Component
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
                 'idnum' => ['required', 'max:9', 'unique:users,idnum'],
                 'position_id' => 'required', // Changed from 'position' to 'position_id'
-                'office' => 'required',
+                'office' =>['required', 'unique:users,office'],
                 'password' => ['required', 'confirmed', 'min:6', Rules\Password::defaults()],
             ]);
     
@@ -136,6 +137,7 @@ class UserForm extends Component
     {
         $roles = Role::all();
         $positions = Position::all();
+        $offices = OfficeLists::all();
         $filteredPos = Position::where('description', '!=', 'Admin')->get();
         $filteredRoles = Role::whereIn('name', ['Head', 'Maintenance Personnel'])->get();
         return view('livewire.user.user-form', [
@@ -143,6 +145,7 @@ class UserForm extends Component
             'filteredRoles' =>  $filteredRoles,
             'filteredPos' =>   $filteredPos,
             'positions' => $positions,
+            'offices' => $offices,
         ]);
     }
 }

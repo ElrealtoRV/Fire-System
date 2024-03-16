@@ -86,6 +86,7 @@
 							<ul style="display: none;">
 							@if(auth()->user()->hasRole('admin'))
 								<li><a href="/positions">Position</a></li>
+								<li><a href="/office">Office</a></li>
 							@endif
 							
 							@if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('Head'))

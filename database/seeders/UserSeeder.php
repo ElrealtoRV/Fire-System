@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Position;
+use App\Models\OfficeLists;
 
 class UserSeeder extends Seeder
 {
@@ -15,6 +16,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $adminPosition = Position::create(['description' => 'Admin']);
+        $adminOffice = OfficeLists::create(['description' => 'CSIT']);
 
         User::create([
             'first_name' => 'Ronver',
@@ -26,25 +28,25 @@ class UserSeeder extends Seeder
             'contnum' => '09269325483',
             'position_id' => $adminPosition->id, 
             'idnum' => '201901160',
-            'office' => 'CSIT Office',
+            'office' => $adminOffice->id, 
             'password' => bcrypt('admin123')
         ])->assignRole('admin');
 
           // Create staff user
-          $headPosition = Position::create(['description' => 'Head']);
-          User::create([
-            'first_name' => 'Jane',
-            'middle_name' => 'ehhh',
-            'last_name' => 'Doe',
-            'age' => '20',
-            'bdate' => 'june 26, 1998',
-            'email' => 'head@gmail.com',
-            'contnum' => '09269325482',
-            'position_id' =>  $headPosition->id, 
-            'idnum' => '201901161',
-            'office' => 'BGO',
-            'password' => bcrypt('staff123')
-        ])->assignRole('Head');
+        //   $headPosition = Position::create(['description' => 'Head']);
+        //   User::create([
+        //     'first_name' => 'Jane',
+        //     'middle_name' => 'ehhh',
+        //     'last_name' => 'Doe',
+        //     'age' => '20',
+        //     'bdate' => 'june 26, 1998',
+        //     'email' => 'head@gmail.com',
+        //     'contnum' => '09269325482',
+        //     'position_id' =>  $headPosition->id, 
+        //     'idnum' => '201901161',
+        //     'office' => 'BGO',
+        //     'password' => bcrypt('staff123')
+        // ])->assignRole('Head');
 
 
         // User::create([
