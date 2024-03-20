@@ -21,6 +21,7 @@ use App\Http\Livewire\Authentication\RoleList;
 use App\Http\Livewire\Authentication\PermissionList;
 use App\Http\Livewire\Position\PositionList;
 use App\Http\Livewire\Affiliation\AffiliationList;
+use App\Http\Livewire\Employee\EmployeeList;
 use App\Http\Livewire\Status\StatusList;
 
 /*
@@ -53,6 +54,8 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('activity-log', ActivityLog::class);
     Route::get('statuses', StatusList::class);  
     Route::get('requesters', RequesterList::class);  
+    Route::get('employees', EmployeeList::class); 
+    Route::get('statuses', StatusList::class); 
 });
 Route::group(['middleware' => ['role:admin|Head']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

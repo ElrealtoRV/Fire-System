@@ -14,6 +14,7 @@ class UserList extends Component
 
     protected $listeners = [
         'refreshParentUser' => '$refresh',
+        'refreshParentUserInfo' => '$refresh',
         'deleteUser',
         'editUser',
         'deleteConfirmUser'

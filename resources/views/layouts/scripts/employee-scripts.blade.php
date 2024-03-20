@@ -8,10 +8,10 @@
 	});
 
 	window.livewire.on('closeEmployeeModal', () => {
-		$('#EmployeeModal').modal('hide');
+		$('#employeeModal').modal('hide');
 	});
 	window.livewire.on('openEmployeeModal', () => {
-		$('#EmployeeModal').modal('show');
+		$('#employeeModal').modal('show');
 	});
 
 	window.livewire.on('closeUserInquiryModal', () => {

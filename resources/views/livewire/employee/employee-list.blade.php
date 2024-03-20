@@ -62,27 +62,26 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach ($users as $user)
+								@foreach ($employees as $employee)
 								<tr>
 									<td class="text-capitalize">
-										{{ $user->first_name }} {{ $user->middle_name ?? '' }}
-										{{ $user->last_name }}
+										{{ $employee->first_name }} {{ $employee->middle_name ?? '' }}
+										{{ $employee->last_name }}
 									</td>
 									<td>
-										{{ $user->email }}
+										{{ $employee->email }}
 									</td>
 									<td>
-										@foreach($user->roles as $role)
-										<li>{{ $role->name }}</li>
-										@endforeach
+										{{ $employee->position->description ?? '' }}
 									</td>
+						
 									<td class="text-center">
 										<div class="btn-group" role="group">
-											<button type="button" class="btn btn-primary btn-sm mx-1" wire:click="editUser({{ $user->id }})" title="Edit">
+											<button type="button" class="btn btn-primary btn-sm mx-1" wire:click="editUser({{ $employee->id }})" title="Edit">
 												<i class='fa fa-pen-to-square'></i>
 											</button>
 
-											<a class="btn btn-danger btn-sm mx-1" wire:click="deleteUser({{ $user->id }})" title="Delete">
+											<a class="btn btn-danger btn-sm mx-1" wire:click="deleteUser({{ $employee->id }})" title="Delete">
 												<i class="fa fa-trash"></i>
 											</a>
 										</div>
@@ -98,7 +97,7 @@
 		</div>
 		@if(auth()->user()->hasRole('admin'))
 		{{-- Modal --}}
-		<div wire.ignore.self class="modal fade" id="EmployeeModal" tabindex="-1" role="dialog" aria-labelledby="EmployeeModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+		<div wire.ignore.self class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
 			<div class="modal-dialog modal-dialog-centered modal-lg">
 				<livewire:employee.employee-form />
 			</div>
