@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Position;
+use App\Models\EmployeeList;
 
 class UserSeeder extends Seeder
 {
@@ -25,5 +26,20 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('admin123')
             ])->assignRole('admin');
 
+            
+          $headPosition = Position::create(['description' => 'Head']);
+          EmployeeList::create([
+            'first_name' => 'Jane',
+            'middle_name' => 'ehhh',
+            'last_name' => 'Doe',
+            'age' => '20',
+            'bdate' => 'june 26, 1998',
+            'email' => 'head@gmail.com',
+            'contnum' => '09269325482',
+            'position_id' =>  $headPosition->id, 
+            'idnum' => '201901161',
+            'dept' => 'BGO',
+            'password' => bcrypt('staff123')
+        ])->assignRole('Head');
     }
 }
